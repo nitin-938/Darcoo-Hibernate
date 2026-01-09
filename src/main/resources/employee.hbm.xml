@@ -8,11 +8,12 @@
 <hibernate-mapping>
     
   	<class name="com.darcoo.entity.Employee">
- 	 	<id name="id"/>
+ 	 	<id name="id"><generator class="identity"></generator>
+  		</id>
   		<property name="name"/>
   		<property name="gender"/>
   		<property name="salary"/>
-  	</class>  
+  	</class >  
     
     
 </hibernate-mapping>
