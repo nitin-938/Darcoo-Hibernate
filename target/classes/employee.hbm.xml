@@ -7,10 +7,10 @@
     
 <hibernate-mapping>
     
-  	<class name="com.darcoo.entity.Employee">
+  	<class name="com.darcoo.entity.Employee" table="emp">
  	 	<id name="id"><generator class="identity"></generator>
   		</id>
-  		<property name="name"/>
+  		<property name="name" column="empName"/>
   		<property name="gender"/>
   		<property name="salary"/>
   	</class >  

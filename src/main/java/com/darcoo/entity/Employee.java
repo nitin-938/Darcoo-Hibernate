@@ -61,6 +61,12 @@ public class Employee {
 	}
 
 
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void saveEmp(Employee emp) {
 		// TODO Auto-generated method stub
 		

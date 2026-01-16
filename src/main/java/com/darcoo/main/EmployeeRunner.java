@@ -40,12 +40,22 @@ public class EmployeeRunner {
 	    
 	    
 	    Session session= sessionFactory.openSession();
-	    Transaction tx = session.beginTransaction();
+	    Transaction tx = session.beginTransaction();  
+	    
+	    
 	   
 	    session.persist(emp);
 	    tx.commit();
+
+//	    Employee employee = session.get(Employee.class,19);
+//	    System.out.println(employee);
 	    
-		
+//	    Employee employee = session.find(Employee.class,19);
+//	    System.out.println(employee);
+
+//	    Employee employee  = new Employee();
+//	    session.load(employee,16);
+//	    System.out.println(employee);
 	}	 
 }
 
