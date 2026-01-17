@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.darcoo.Config.EmpConfiguration;
 import com.darcoo.entity.Employee;
 
 
@@ -17,29 +18,10 @@ public class EmployeeRunner {
 	
 	public static void main(String[]args) {
 		
-		Employee emp = new Employee("Shivam","male",90000);
+		Employee emp = new Employee("Akash","male",90000);
 		
-//		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//	    SessionFactory sessionFactory= cfg.buildSessionFactory();
-	  		
-//		method chain single line.......
 		
-//	    SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	    
-//		2 method 
-		
-//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-//		Metadata metadata = new MetadataSources (ssr).getMetadataBuilder().build();
-//	    SessionFactory sessionFactory = metadata.buildSessionFactory();
-	
-//		2 method chaining single line
-		
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder()
-		.configure("hibernate.cfg.xml").build()).getMetadataBuilder()
-		.build().buildSessionFactory();	    
-	    
-	    
-	    Session session= sessionFactory.openSession();
+		Session session = EmpConfiguration.getSessionFactory().openSession();
 	    Transaction tx = session.beginTransaction();
 	   
 	    session.persist(emp);
