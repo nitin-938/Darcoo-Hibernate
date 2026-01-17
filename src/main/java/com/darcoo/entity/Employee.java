@@ -1,9 +1,19 @@
 package com.darcoo.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name = "Employee")
 public class Employee {
-	
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	private String name,gender;
+	 @Column(name = "e_Name")
+	private String name;
+	private String   gender;
 	private int salary;
 
 	
@@ -58,6 +68,12 @@ public class Employee {
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
+	}
+
+
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 
