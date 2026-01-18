@@ -1,7 +1,6 @@
 package com.darcoo.Config;
 
-	import java.util.Properties;
-
+	import java.util.Properties; 
 	import org.hibernate.SessionFactory;
 	import org.hibernate.boot.Metadata;
 	import org.hibernate.boot.MetadataSources;
@@ -11,6 +10,7 @@ package com.darcoo.Config;
 
 	import com.darcoo.entity.Employee;
 
+	
 	public class EmpConfiguration {
 	
 		    public static SessionFactory getSessionFactory() {
@@ -23,7 +23,7 @@ package com.darcoo.Config;
 		            
 		            properties .put(Environment.JAKARTA_JDBC_USER, "root");
 		            properties .put(Environment.JAKARTA_JDBC_PASSWORD, "root");
-		            properties .put(Environment.HBM2DDL_AUTO, "create"); // table create
+		            properties .put(Environment.HBM2DDL_AUTO, "update"); // table create
 		            properties .put(Environment.SHOW_SQL, "true");
 		            properties .put(Environment.FORMAT_SQL, "true");
 //
