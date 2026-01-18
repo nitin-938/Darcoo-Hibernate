@@ -12,6 +12,14 @@ import com.darcoo.entity.Employee;
 
 public class EmployeeRunner {
 	
+	public static void delById(int id , Session session) {
+//		HQL delete query
+		
+		MutationQuery query = session.createMutationQuery("delete from emp where id = 15");
+		 query.setParameter("id", id); 
+		query.executeUpdate();
+	}
+	
 	public static void main(String[]args) {
 		
 		Employee emp1 = new Employee("Anjali","Female",50000,"India");
@@ -86,15 +94,16 @@ public class EmployeeRunner {
 	    
 //	    HQL Delete Query
 	    
-	    MutationQuery query1 = session.createMutationQuery("delete from emp where id = 17");
-	    query1.executeUpdate();
-	    
+//	    MutationQuery query1 = session.createMutationQuery("delete from emp where id = 17");
+//	    query1.executeUpdate();
+//	    
 	    Query query2 = session.createQuery("from emp",Employee.class);
 	    List list = query2.list();
 	    System.out.println(list);
 	    
 	    
-	    session.persist(emp1);
+	    
+		session.persist(emp1);
 	    tx.commit();
 	    session.close();
 	    
