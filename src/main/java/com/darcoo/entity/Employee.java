@@ -1,30 +1,51 @@
 package com.darcoo.entity;
 
-import jakarta.persistence.Column;
 
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Transient;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne; 
 
-
-@NamedQuery(name = "updateAnEmployee",query = "update  emp set name = :n where id=:i")
-@NamedQuery(name = "deleteEmployeeById", query = "delete from emp where id =:i ")
 
 @Entity(name = "emp")
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	@Column(name = "e_Name")
 	private String name;
 	private String gender;
 	private int salary; 
-	@Transient
-	private String country;
+
+	@OneToOne(mappedBy ="employee")
+	@JoinColumn(name = "add_id")
+	private Address address;
 	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Employee(String name, String gender, int salary) {
+		this.name = name;
+		this.gender = gender;
+		this.salary = salary;
+	
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -64,34 +85,13 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
+				+ address + "]";
 	}
 
-	public Employee(String name, String gender, int salary,String country) {
-		super();
-		this.name = name;
-		this.gender = gender;
-		this.salary = salary;
-		this.country = country;
-	}
-
-
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public void saveEmp(Employee emp) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 
 }
   
