@@ -2,22 +2,22 @@ package com.darcoo.entity;
 
 
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int h_No;
 	private String city,state;
 	
-	@OneToOne
-	private Employee employee;
-	
+//	@OneToOne
+//	private Employee employee;
+//	
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,14 +29,14 @@ public class Address {
 		this.state = state;
 	}
 	
-	public Employee getEmployee() {
-		return employee;
-	}
-	
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-	
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//	
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
+//	
 
 	public int geth_No() {
 		return h_No;
