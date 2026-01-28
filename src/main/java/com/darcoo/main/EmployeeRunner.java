@@ -1,51 +1,49 @@
 package com.darcoo.main;
 
+
 import org.hibernate.Session;
-
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-
+import com.darcoo.Config.EmpConfiguration;
+import com.darcoo.entity.Address;
 import com.darcoo.entity.Employee;
-
 
 public class EmployeeRunner {
 	
-	public static void main(String[]args) {
+	public static void main(String args[]) {
 		
-		Employee emp = new Employee("Shivam","male",90000);
-		
-//		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//	    SessionFactory sessionFactory= cfg.buildSessionFactory();
-	  		
-//		method chain single line.......
-		
-//	    SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	    
-//		2 method 
-		
-//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-//		Metadata metadata = new MetadataSources (ssr).getMetadataBuilder().build();
-//	    SessionFactory sessionFactory = metadata.buildSessionFactory();
+//		Employee emp1 = new Employee("Milan","Male",8865);
+//		Address add1 = new Address ("GZD","UP");
 	
-//		2 method chaining single line
+		Employee emp1 = new Employee();
+		emp1.setName("Amit");
+		emp1.setGender("Male");
+		emp1.setSalary(50000);
 		
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder()
-		.configure("hibernate.cfg.xml").build()).getMetadataBuilder()
-		.build().buildSessionFactory();	    
-	    
-	    
-	    Session session= sessionFactory.openSession();
+		Address add1 = new Address();
+		add1.setCity("Noida");
+		add1.setState("UP");
+		add1.setEmployee(emp1);
+		
+		emp1.setAddress(add1);
+		
+		
+		Session session = EmpConfiguration.getSessionFactory().openSession();
 	    Transaction tx = session.beginTransaction();
-	   
-	    session.persist(emp);
+	    session.persist(add1);
+	    session.persist(emp1);
 	    tx.commit();
-	    
+	  
+	    Employee employee = session.find(Employee.class,1);
+		System.out.println(employee);
+		System.out.println(employee.getAddress());
 		
+		Address address = session.find(Address.class,1);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
+	    
+//	    Query<Employee> query= session("from emp",Employee.class);
+//	    System.out.println(query.list());
+	
 	}	 
 }
 

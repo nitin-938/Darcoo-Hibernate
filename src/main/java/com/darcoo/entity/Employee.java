@@ -1,16 +1,55 @@
 package com.darcoo.entity;
 
+import jakarta.persistence.Entity;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne; 
+
+@Entity(name = "emp")
 public class Employee {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	private String name,gender;
-	private int salary;
+	private String name;
+	private String gender;
+	private int salary; 
+	
+	
+
+	@OneToOne(mappedBy ="employee")
+	@JoinColumn(name = "add_id")
+	private Address address;
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Employee(String name, String gender, int salary) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.salary = salary;
+	}
 
 	
+	
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public int getId() {
 		return id;
 	}
-
 
 	public String getName() {
 		return name;
@@ -53,12 +92,6 @@ public class Employee {
 		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
 	}
 
-	public Employee(String name, String gender, int salary) {
-		super();
-		this.name = name;
-		this.gender = gender;
-		this.salary = salary;
-	}
 
 
 	public void saveEmp(Employee emp) {
