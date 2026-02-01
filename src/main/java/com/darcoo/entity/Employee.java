@@ -22,12 +22,11 @@ public class Employee {
 	private String gender;
 	private int salary; 
 	
-	@OneToMany
+	@OneToMany(cascade = CasecadeType.All)
 	private List<Address> addresses;
 	
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Employee(String name, String gender, int salary) {
