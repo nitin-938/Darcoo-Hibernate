@@ -13,52 +13,52 @@ public class EmployeeRunner {
 	
 	public static void main(String args[]) {
 
-		Employee emp1 = new Employee(); 
-		emp1.setName("Amit");
-		emp1.setGender("Male");
-		emp1.setSalary(50000);
-		
-		Address add1 = new Address();
-		add1.setCity("Noida");
-		add1.setState("UP");
-		add1.setEmployee(emp1);
-		
-		Address add2 = new Address(); 
-		add2.setCity("Mumbai");
-		add2.setState("Maharastra");
-		add2.setEmployee(emp1);
-		
-		Address add3 = new Address();
-		add3.setCity("Prayagraj");
-		add3.setState("UP");
-		add3.setEmployee(emp1);
-		 
-	 
-		ArrayList<Address> listOfAddresses = new ArrayList<>();
-		listOfAddresses.add(add1);
-		listOfAddresses.add(add2);		 
-		listOfAddresses.add(add3);
-		
-		
-		emp1.setAddresses(listOfAddresses);
+//		Employee emp1 = new Employee(); 
+//		emp1.setName("Amit");
+//		emp1.setGender("Male");
+//		emp1.setSalary(50000);
+//		
+//		Address add1 = new Address();
+//		add1.setCity("Noida");
+//		add1.setState("UP");
+//		add1.setEmployee(emp1);
+//		
+//		Address add2 = new Address(); 
+//		add2.setCity("Mumbai");
+//		add2.setState("Maharastra");
+//		add2.setEmployee(emp1);
+//		
+//		Address add3 = new Address();
+//		add3.setCity("Prayagraj");
+//		add3.setState("UP");
+//		add3.setEmployee(emp1);
+//		 
+//	 
+//		ArrayList<Address> listOfAddresses = new ArrayList<>();
+//		listOfAddresses.add(add1);
+//		listOfAddresses.add(add2);		 
+//		listOfAddresses.add(add3);
+//		
+//		
+//		emp1.setAddresses(listOfAddresses);
 		
 		Session session = EmpConfiguration.getSessionFactory().openSession();
   	    Transaction tx = session.beginTransaction();
 	    
-	    session.persist(add1);
-	    session.persist(add2);
-	    session.persist(add3);
-	    session.persist(emp1);
-	    tx.commit();
+//	    session.persist(add1);
+//	    session.persist(add2);
+//	    session.persist(add3);
+//	    session.persist(emp1);
+//	    tx.commit();
 	  
-	    Employee employee= session.find(Employee.class, 1);
-	    System.out.println(employee);
-	    System.out.println(employee.getAddresses());
+//	    Employee employee= session.find(Employee.class, 1);
+//	    System.out.println(employee);
+//	    System.out.println(employee.getAddresses());
 	    
 	    
-//	    Address address = session.find(Address.class,2);
-//	    System.out.println(address);
-//	    System.out.println(address.getEmployee());
+	    Address address = session.find(Address.class,3);
+	    System.out.println(address);
+	    System.out.println(address.getEmployee());
 	}	 
 }
 
