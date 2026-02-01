@@ -14,12 +14,11 @@ public class Address {
 		private int h_No;
 		private String city,state;
 		
-		@OneToOne
+		@OneToOne(mappedBy = "address")
 		private Employee employee;
 		
 		public Address() {
 			super();
-			// TODO Auto-generated constructor stub
 		}
 			
 		public Address( String city, String state) {
