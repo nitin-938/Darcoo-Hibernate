@@ -16,7 +16,6 @@ import org.hibernate.cfg.Environment;
 
 		            Properties properties = new Properties();
 		            
-		            
 		            properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
 		    		properties.put(AvailableSettings.JAKARTA_JDBC_DRIVER, "com.mysql.cj.jdbc.Driver");
 		            properties .put(Environment.JAKARTA_JDBC_URL,"jdbc:mysql://localhost:3306/hibernate");

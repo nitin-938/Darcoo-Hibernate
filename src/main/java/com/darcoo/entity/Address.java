@@ -1,12 +1,13 @@
 package com.darcoo.entity;
 
 
+import java.util.List;
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+
 
 @Entity
 public class Address {
@@ -14,10 +15,10 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int h_No;
 	private String city,state;
+
+	@ManyToMany
+	private List<Employee>employee;
 	
-//	@OneToOne
-//	private Employee employee;
-//	
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -28,15 +29,23 @@ public class Address {
 		this.city = city;
 		this.state = state;
 	}
+
 	
-//	public Employee getEmployee() {
-//		return employee;
-//	}
-//	
-//	public void setEmployee(Employee employee) {
-//		this.employee = employee;
-//	}
-//	
+	public int getH_No() {
+		return h_No;
+	}
+
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setH_No(int h_No) {
+		this.h_No = h_No;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
 
 	public int geth_No() {
 		return h_No;
